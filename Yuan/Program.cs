@@ -13,11 +13,11 @@ namespace Yuan
     {
         static void Main(string[] args)
         {
-            var i = new DnsClient(IPAddress.Parse("37.209.192.9"), 5000).Resolve(DomainName.Parse("mili.one"),
+            var dnsMessage = new DnsClient(IPAddress.Parse("37.209.192.9"), 5000).Resolve(DomainName.Parse("mili.one"),
                 RecordType.Ns);
-            Console.WriteLine(i.ReturnCode);
-            foreach (var v in i.AuthorityRecords) Console.WriteLine(v.ToString());
-            foreach (var v in i.AnswerRecords) Console.WriteLine(v.ToString());
+            Console.WriteLine(dnsMessage.ReturnCode);
+            foreach (var i in dnsMessage.AuthorityRecords) Console.WriteLine(i);
+            foreach (var i in dnsMessage.AnswerRecords) Console.WriteLine(i);
             Console.ReadKey();
         }
     }
